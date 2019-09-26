@@ -1,14 +1,27 @@
 export const reducerTodos = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_TASK':
+        case 'ADD_TODO':
             console.log('state:', action.payload); {
                 return [...state, action.payload];
             }
-        case 'DELETE_TASK':
+        case 'DELETE_TODO':
             {
                 let id = action.payload.id;
                 return state.filter((item) => {
                     return item.id !== id
+                })
+            }
+        case 'TOGGLE_TODO':
+            {
+                const id = action.payload.id;
+                return state.map(item => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            completed: !item.completed
+                        };
+                    }
+                    return item;
                 })
             }
         default:

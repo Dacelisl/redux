@@ -1,19 +1,24 @@
 export const actionDelete = (payload) => {
     return {
-        type: 'DELETE_TASK',
+        type: 'DELETE_TODO',
         payload
     }
 }
-export const actionAddTask = (payload) => {
-    console.log('payload', payload);
+export const actionAddTodo = (payload) => {
     return {
-        type: 'ADD_TASK',
+        type: 'ADD_TODO',
         payload
     }
 }
 export const changeFilter = (payload) => {
     return {
         type: 'CHANGE_FILTER',
+        payload
+    }
+}
+export const actionToggle = (payload) => {
+    return {
+        type: 'TOGGLE_TODO',
         payload
     }
 }
