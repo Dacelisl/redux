@@ -1,7 +1,7 @@
 export const reducerTodos = (state = [], action) => {
     switch (action.type) {
         case 'ADD_TODO':
-            console.log('state:', action.payload); {
+            {
                 return [...state, action.payload];
             }
         case 'DELETE_TODO':

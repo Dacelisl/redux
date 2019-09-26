@@ -4,8 +4,6 @@ import { rootReducer } from './reducers/index';
 import { AppController } from './app/app.controller';
 import { AppTemplate } from './app/app.template';
 import { $on } from './app/app.helper';
-/* import { actionAddTask, actionDelete, changeFilter } from './Actions'; */
-
 
 document.addEventListener("DOMContentLoaded", (event) => {
     const store = createStore(
@@ -15,7 +13,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     );
     const template = new AppTemplate();
     const controller = new AppController(template, store);
-    controller.showTodos();
+    controller.showInitTodos();
 
     const setRoute = () => {
         controller.setRoute(document.location.hash)

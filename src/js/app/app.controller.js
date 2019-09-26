@@ -1,4 +1,7 @@
 import { actionAddTodo, changeFilter, actionDelete, actionToggle } from '../actions/index';
+import { getVisibleTodos } from './../selectors'
+import subscribe from 'redux-subscribe-reselect'
+
 export class AppController {
 
     constructor(template, store) {
@@ -7,7 +10,8 @@ export class AppController {
         this.template.bindAddTodo(this.addTodo.bind(this));
         this.template.bindRemoveTodo(this.deleteTodo.bind(this));
         this.template.bindToggleTodo(this.toggleTodo.bind(this));
-        this.store.subscribe(this.showTodos.bind(this));
+        /* this.store.subscribe(this.showTodos.bind(this)); */
+        subscribe(this.store, getVisibleTodos, this.showTodos.bind(this));
     }
 
     setRoute(route) {
@@ -49,16 +53,25 @@ export class AppController {
         );
     }
 
-    showTodos() {
-        const store = this.store.getState();
-        let filter = store.filter;
-        let todos = store.todos;
+    showInitTodos() {
+        const state = this.store.getState();
+        const todos = getVisibleTodos(state)
+        this.showTodos(todos);
+    }
+
+    showTodos(todos) {
+        if (todos !== 'undefined') {
+            this.template.showTodos(todos);
+        }
+        /* const state = this.store.getState(); */
+        /* let filter = state.filter;
+        let todos = state.todos;
         if (filter === 'ACTIVE') {
             todos = todos.filter(todo => !todo.completed);
         }
         if (filter === 'COMPLETED') {
             todos = todos.filter(todo => todo.completed);
-        }
-        this.template.showTodos(todos);
+        } */
+        /* const todos = getVisibleTodos(state) */
     }
 }
