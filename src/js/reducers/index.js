@@ -3,6 +3,6 @@ import { reducerFilter } from './filter.reducer'
 import { reducerTodos } from './todo.reducer'
 
 export const rootReducer = combineReducers({
-    todos: reducerTodos,
+    todosState: reducerTodos,
     filter: reducerFilter
 })

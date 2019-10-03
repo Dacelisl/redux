@@ -1,7 +1,10 @@
 import { createSelector } from 'reselect';
 
 const getFilter = (state) => state.filter;
-const getTodos = (state) => state.todos;
+const getTodos = (state) => {
+    state.todosState.data
+};
+const getLoadingTodos = (state) => state.todosState.loading;
 
 export const getVisibleTodos = createSelector(
     [getFilter, getTodos],

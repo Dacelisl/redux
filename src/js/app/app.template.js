@@ -49,7 +49,7 @@ export class AppTemplate {
         <li data-id="${todo.id}" class="${todo.completed}">
             <div class="view">
               <input class="toggle" type="checkbox" ${todo.completed ? 'checked': ''}>
-              <label>${todo.text}</label>
+              <label>${todo.title}</label>
               <button class="destroy"></button>
             </div>
         </li>`;

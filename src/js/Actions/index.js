@@ -16,6 +16,12 @@ export const changeFilter = (payload) => {
         payload
     }
 }
+export const loadTodos = (payload) => {
+    return {
+        type: 'LOAD_TODOS_START',
+        payload
+    }
+}
 export const actionToggle = (payload) => {
     return {
         type: 'TOGGLE_TODO',
